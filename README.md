@@ -2,20 +2,20 @@
 
 ---
 
-# Work In Progress!
-## Just using this readme to tinker with the idea!!
+#### Work In Progress!
+#### Just using this readme to tinker with the idea!!
 
 ---
 
-Thanks [krisajenkins](https://github.com/krisajenkins) to and his [original implementation in Elm](https://github.com/krisajenkins/remotedata)
+Thanks to [krisajenkins](https://github.com/krisajenkins) and his [original implementation in Elm](https://github.com/krisajenkins/remotedata)
 
 > A framework agnostic js utility to render remote data.
 
 Often you want to render data fetched from your server in a page. But quickly the data structure starts to look like this:
 ```js
 {
-  loading: bool,
-  fetched: bool,
+  loading: false,
+  fetched: false,
   data: [],
   errors: null
 }
@@ -126,4 +126,76 @@ class ThingsList extends React.Component {
 ```
 
 ### With Vue
-... todo
+
+I have to make sure this actually works ;). But it should.
+
+Example to render just the success:
+```js
+<template>
+  <div>
+    <RemoteData>
+      <ul slot-scope="props">
+        <li v-for="thing in props.content">{{ thing }}</li>
+      </ul>
+    </RemoteData>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      things: new RemoteData('http://httpbin.org/get?data=a&data=b&data=c')
+    }
+  },
+
+  mounted() {
+    this.things.fetch()
+  }
+}
+</script>
+```
+
+And to manage more things:
+```js
+<template>
+  <div>
+    <RemoteData>
+      <ul slot="ok" slot-scope="props">
+        <li v-for="thing in props.content">{{ thing }}</li>
+      </ul>
+
+      <p slot="not-asked">
+        <button @click="things.fetch()">Click here to load data</button>
+      </p>
+
+      <p slot="pending">
+        loading...
+      </p>
+
+      <Warning slot="failed" slot-scope="props">
+        Something did not worked as expected: {{ props.error.toString }}
+      </Warning>
+    </RemoteData>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      things: new RemoteData('http://httpbin.org/get?data=a&data=b&data=c')
+    }
+  },
+
+  computed: {
+    loadedThings() {
+      return this.things.content || []
+    }
+  }
+}
+</script>
+```
+
+Same as in React, each slot is optional. So you could even use a RemoteData to model an ajax call that returns nothing,
+just to render on the loading and error state.
