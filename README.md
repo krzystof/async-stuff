@@ -199,3 +199,16 @@ export default {
 
 Same as in React, each slot is optional. So you could even use a RemoteData to model an ajax call that returns nothing,
 just to render on the loading and error state.
+
+## API
+
+You can either pass a string to the `RemoteData` constructor, and that will be the url to fetch from.
+Or pass a callback.
+
+```js
+// These 2 examples are equivalent:
+const itIs = new RemoteData('http://httpbin.org.get')
+const theSame = new RemoteData(() => axios.get('http://httpbin.org.get'))
+```
+
+RemoteData even use axios under the hood. But you can use anything as long as it returns a Promise. It does not have to be an http request.
