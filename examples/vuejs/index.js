@@ -3,7 +3,7 @@ import RemoteData from '../../src/RemoteData'
 
 const VueRemoteData = {
   template: `
-
+    <slot></slot>
   `,
 }
 
@@ -12,7 +12,7 @@ const CustomRemoteData = {
   props: ['src'],
   template: `
     <vue-remote-data :src="src">
-      <ul slot="ok" slot-scope="props">
+      <ul slot-scope="props">
         <li v-for="thing in props.content">{{ thing }}</li>
       </ul>
 
@@ -57,7 +57,7 @@ new Vue({
 
   methods: {
     fetchThings() {
-      console.log('youhou')
+      console.log('youhou') <-- todo!!
     },
   },
 })
