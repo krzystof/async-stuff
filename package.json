@@ -1,0 +1,41 @@
+{
+  "name": "remote-data",
+  "version": "0.1.0",
+  "description": "Fetch and render asynchronous data like you mean it",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krzystof/remote-data.git"
+  },
+  "author": "Christophe Graniczny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krzystof/remote-data/issues"
+  },
+  "homepage": "https://github.com/krzystof/remote-data#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.1.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.5.0",
+    "eslint-plugin-react": "^7.6.1",
+    "jest": "^22.1.4",
+    "prettier": "1.10.2",
+    "prop-types": "^15.6.0",
+    "react-dom": "^16.2.0",
+    "regenerator-runtime": "^0.11.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0"
+  }
+}

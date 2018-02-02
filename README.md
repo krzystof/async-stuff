@@ -7,6 +7,36 @@
 
 ---
 
+
+- add jest
+- add eslint
+- add prettier
+
+- Write the js lib
+- add CI + badge
+- Write the react component (with examples)
+- Write the vue component (with examples)
+- How does Vue reactivity works with that?
+
+- add flow?
+
+
+Write implementations for:
+- [ ] React
+- [ ] Vue
+- [ ] Vanillajs
+- [ ] Angular1
+- [ ] Angular2
+- [ ] Polymer
+- [ ] Ember
+- [ ] Aurelia
+- [ ] Preact
+
+- store the query params, cache result
+- add a noCache version of it
+
+---
+
 Thanks to [krisajenkins](https://github.com/krisajenkins) and his [original implementation in Elm](https://github.com/krisajenkins/remotedata)
 
 > A framework agnostic js utility to render remote data.
@@ -44,9 +74,7 @@ class ThingsList extends React.Component {
     this.state.things.fetch()
   }
 
-  render() {
-    <CustomRemoteDataRendering src={this.state.things) />
-  }
+  // render() ?
 }
 ```
 Whether the state comes from redux, a component local state or anything else does not really matter.
@@ -72,6 +100,22 @@ const CustomRemoteDataRendering = ({render, src}) => {
     }
 
     return render(src.content)
+  }
+}
+
+// or this? not sure yet...
+const CustomRemoteDataRendering = ({render, src}) => {
+  render() {
+    switch (src.status()) {
+      case NOT_ASKED:
+        return null
+      case PENDING:
+        return <Spinner/>
+      case FAILED:
+      return <div>{src.error.toString()}</div>
+      default:
+        return render(src.content)
+    }
   }
 }
 ```
