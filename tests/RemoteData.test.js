@@ -67,7 +67,17 @@ describe('RemoteData(Function)', () => {
   test('failed - can be reset')
   test('fetch() returns the data')
 
-  test('RemoteData(String)')
+  test('RemoteData(String)', () => {
+    const remoteThings = new RemoteData(
+      'http://httpbin.org/get?items=a&items=b&items=c'
+    )
+
+    return remoteThings.fetch().then(response => {
+      console.log(response)
+      expect(response.data).toEqual(['a', 'b', 'c'])
+    })
+  })
+
   test('RemoteData.notCached()')
   test('pending - can be reset?')
 })
