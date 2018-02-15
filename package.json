@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/krzystof/remote-data#readme",
   "devDependencies": {
+    "axios": "^0.17.1",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
     "babel-preset-env": "^1.6.1",

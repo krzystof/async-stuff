@@ -1,11 +1,13 @@
+import axios from 'axios'
+
 const NOT_ASKED = 'NOT_ASKED'
 const PENDING = 'PENDING'
 const OK = 'OK'
 const FAILED = 'FAILED'
 
 class RemoteData {
-  constructor(dataSrc) {
-    this.dataSrc = dataSrc
+  constructor(dataSrc, params = null) {
+    this.dataSrc = typeof dataSrc === 'string' ? () => axios.get(dataSrc, {params}) : dataSrc
     this.lifeCycle = NOT_ASKED
     this.data = null
   }
@@ -25,7 +27,7 @@ class RemoteData {
     this.lifeCycle = PENDING
 
     return this.dataSrc()
-      .then(data => {
+      .then(({data}) => {
         this.lifeCycle = OK
         this.data = data
       })
@@ -49,6 +51,11 @@ class RemoteData {
 
   isFailed() {
     return this.lifeCycle === FAILED
+  }
+
+  reset() {
+    this.lifeCycle = NOT_ASKED
+    this.data = null
   }
 }
 
