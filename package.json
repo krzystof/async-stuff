@@ -1,7 +1,7 @@
 {
-  "name": "remote-data",
+  "name": "async-stuff",
   "version": "0.1.0",
-  "description": "Fetch and render asynchronous data like you mean it",
+  "description": "Fetch and render asynchronous stuff like you mean it",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/krzystof/remote-data.git"
   },
-  "author": "Christophe Graniczny",
+  "author": "Christophe Graniczny <getintouch@christophegraniczny.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/krzystof/remote-data/issues"
